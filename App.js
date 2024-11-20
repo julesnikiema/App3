@@ -1,20 +1,17 @@
-import { StyleSheet,Text, View, useWindowDimensions } from 'react-native';
+import { StyleSheet,Text, View, SafeAreaView, Platform } from 'react-native';
 
 export default function App() {
 
-  const windowWidth = useWindowDimensions().width;
-  const windowHeight = useWindowDimensions().height;
+
 
   return (
+    <SafeAreaView style={styles.safecontainer}> 
     <View style={styles.container}>
-    <View style={[styles.box,
-      {width: windowWidth > 500 ? "70%": "90%",
-                              height: windowHeight > 600 ? "60%":"90%"}]}>
-           <Text style={{fontSize: windowWidth> 500 ? 50 : 24}} >
-       welcome jules 
-        </Text>
+    <View style={styles.box} >
+           <Text style={styles.text}>welcome jules</Text>
     </View>
     </View>
+    </SafeAreaView>
   );
 }
 
@@ -22,17 +19,34 @@ export default function App() {
 
 
 const styles = StyleSheet.create({
-  container: {
+  safecontainer: {
     flex: 1,
     backgroundColor: 'plum',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  container :{
+    backgroundColor: 'plum', 
+    flex: 1,
+    paddingTop: Platform.OS ==="android"? 45:0,
   },
   box:{
-
-    backgroundColor:"lightblue",
-    alignItems:"center",
-    justifyContent:"center"
+  padding :20,
   },
+  
+  text:{
+    ...Platform.select({
+      android:{
+        color:"purple",
+        fontSize:24,
+        fontStyle:"italic",
+      },
+      ios : {
+        color:"blue",
+        fontSize:24,
+        fontStyle:"italic",  
+      },
+    }),
+    fontWeight : "bold",
+    textAlign :"center",
+  }
   
 });
