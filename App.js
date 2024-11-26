@@ -1,5 +1,7 @@
 import { StyleSheet,Text, View, SafeAreaView, Platform } from 'react-native';
 
+import CustomButton from './components/CustomButton';
+
 export default function App() {
 
 
@@ -8,7 +10,8 @@ export default function App() {
     <SafeAreaView style={styles.safecontainer}> 
     <View style={styles.container}>
     <View style={styles.box} >
-           <Text style={styles.text}>welcome jules</Text>
+           <Text style={styles.text}>welcome jules !</Text>
+           <CustomButton />
     </View>
     </View>
     </SafeAreaView>
